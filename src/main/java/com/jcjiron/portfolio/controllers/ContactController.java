@@ -9,21 +9,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jcjiron.portfolio.services.ContactServiceImpl;
+import com.jcjiron.portfolio.services.ContactService;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
 @Log
 @RestController()
 @RequestMapping("/api/contact")
+@RequiredArgsConstructor
 public class ContactController {
 
-	private ContactServiceImpl contactService;
-
 	@Autowired
-	public ContactController( ContactServiceImpl contactService) {
-		this.contactService = contactService;
-	}
+	private ContactService contactService;
 
 	@PostMapping("/email")
 	public ResponseEntity postMethodName( @RequestBody HashMap<String, String> body) {

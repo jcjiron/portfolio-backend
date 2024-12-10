@@ -6,7 +6,7 @@ FROM openjdk:22-jdk-slim
 WORKDIR /app
 
 # Step 3: Copy the application JAR file to the container
-COPY target/*.jar app.jar
+COPY build/libs/*.jar app.jar
 
 # Step 4: Expose the port the service will run on
 EXPOSE 8080

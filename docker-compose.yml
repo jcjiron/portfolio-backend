@@ -1,10 +1,15 @@
 version: "3.8"
 services:
-  email-service:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "${SERVER_PORT}:${SERVER_PORT}"
     env_file:
       - .env
+    environment:
+      - SPRING_MAIL_USERNAME=${SPRING_MAIL_USERNAME}
+      - SPRING_MAIL_PASSWORD=${SPRING_MAIL_PASSWORD}
+      - MAIL_DESTINATION=${MAIL_DESTINATION}
+      - SERVER_PORT=${SERVER_PORT}
